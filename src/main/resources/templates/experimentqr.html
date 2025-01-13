@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Experiment Qr</title>
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+<style>
+
+  table {
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #f2f2f2;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  table td {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  .table-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 152px;
+  }
+
+td img {
+  max-width: 20%;
+  height: auto;
+}
+.back{
+	background-color:white;
+    color:black;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+	}
+</style>
+<body>
+<br>
+<a th:href = "@{/main}"><button class="back">Back</button></a>
+
+<table>
+  <thead>
+  <tr>
+    <th>QR CODE</th>
+    <th>Subject</th>
+    <th>Experiment Number</th>
+    <th>Link</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="experimentLink, index : ${experimentLinks}">
+    <td>
+      <img th:src="${'data:image/png;base64,' + qrImageBase64List[index.index]}" />
+    </td>
+    <td th:text="${experimentLink.subject}"></td>
+    <td th:text="${experimentLink.experiment}"></td>
+    <td th:text="${experimentLink.link}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

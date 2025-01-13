@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<style>
+	/* Add background image */
+	.navbar-inverse {
+    background-color: #333;
+    border-color: #333;
+  }
+	body {
+		background-image: url("images/login.jpeg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	
+	/* Set header font */
+	.navbar-brand {
+		font-family: Arial, sans-serif;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	
+	/* Center form on page */
+	.container {
+		margin-top: 80px;
+	}
+	
+	/* Set form background color and opacity */
+	form {
+		background-color: #f7f7f7;
+		border-radius: 5px;
+		padding: 20px;
+		opacity: 0.9;
+	}
+	
+	/* Add margin to form elements */
+	.form-group {
+		margin-bottom: 20px;
+	}
+	
+	/* Style form labels */
+	label {
+		font-family: Arial, sans-serif;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	/* Style form inputs */
+	input[type=text], input[type=password] {
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		background-color: #e8e8e8;
+		color: #555;
+	}
+
+	input[type=submit] {
+		background-color: #428bca;
+		color: #fff;
+		font-size: 20px;
+		font-weight: bold;
+		border: none;
+		border-radius: 5px;
+		padding: 10px 20px;
+	}
+	
+	/* Style error message */
+	.alert-danger {
+		background-color: #f2dede;
+		color: #a94442;
+		border: none;
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	.alert-info {
+		background-color: #d9edf7;
+		color: #31708f;
+		border: none;
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+	
+	/* Add hover effect to form button */
+	input[type=submit]:hover {
+		background-color: #3071a9;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+
+	<!-- Create navigation bar (header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Admin Login</a>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-default">
+				  <div class="panel-body">
+				    <form th:action="@{/login}" method="post">
+					
+					  <!-- error message -->
+					  <div th:if="${param.error}" class="alert alert-danger">
+					    Invalid username or password.
+					  </div>
+				
+					  <!-- logout message -->
+					  <div th:if="${param.logout}" class="alert alert-info">
+					    You have been logged out.
+					  </div>
+					
+					  <div class="form-group">
+					    <label for="username">Username</label>
+					    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Email ID" autofocus="autofocus">
+					  </div>
+					
+					  <div class="form-group">
+					    <label for="password">Password</label>
+					    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+					  </div>
+					
+					  <div class="form-group">
+					    <div class="row">
+					      <div class="col-sm-6 col-sm-offset-3">
+					        <input type="submit" name="Adminlogin-submit" id="Adminlogin-submit" class="form-control btn btn-primary" value="Log In">
+					      </div>
+					    </div>
+					  </div>
+						<div class="form-group">
+							<span><a href="/" th:href="@{/main}">Go to Main Page</a></span>
+						</div>
+
+						<div class="form-group">
+					<span><a href="/" th:href="@{/coordinator}">Coordinator Login
+								here</a></span>
+						</div>
+						<div class="form-group">
+					<span><a href="/" th:href="@{/login-faculty}">Faculty Login
+								here</a></span>
+						</div>
+					</form>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

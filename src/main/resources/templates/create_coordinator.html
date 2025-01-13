@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Coordinator Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+.form-control:focus {
+			border-color: #1b6ec2;
+			box-shadow: none;
+		}
+
+		.btn-primary {
+			background-color: #1b6ec2;
+			border-color: #1b6ec2;
+		}
+
+		.btn-primary:hover {
+			background-color: #005fbf;
+			border-color: #005fbf;
+		}
+
+		.form-group label {
+			font-weight: bold;
+		}
+
+		.form-group .input-group-text {
+			background-color: #e9ecef;
+			border-color: #ced4da;
+		}
+
+		.form-group .form-control:not(select) {
+			padding-left: 40px;
+		}
+
+		.select2-container {
+			width: 100% !important;
+		}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Coordinator Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/faculty}">Course</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class = "container">
+  <div class = "row">
+    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center"> Add Coordinator </h1>
+      <div class = "card-body">
+        <form th:action="@{/adminmessage}" th:object="${coordinators}" method="POST">
+          <div class ="form-group">
+            <label> First Name </label>
+            <input
+                    type = "text"
+                    name = "firstName"
+                    th:field = "*{firstName}"
+                    class = "form-control"
+                    placeholder="Enter First Name"
+            />
+          </div>
+          <div class ="form-group">
+            <label> Last Name </label>
+            <input
+                    type = "text"
+                    name = "lastName"
+                    th:field = "*{lastName}"
+                    class = "form-control"
+                    placeholder="Enter Last Name"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Coordinator Email </label>
+            <input
+                    type = "email"
+                    name = "email"
+                    th:field = "*{email}"
+                    class = "form-control"
+                    placeholder="Enter Coordinator Email"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Password </label>
+            <input
+                    type = "password"
+                    name = "password"
+                    th:field = "*{password}"
+                    class = "form-control"
+                    placeholder="Enter Password"
+            />
+          </div>
+
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

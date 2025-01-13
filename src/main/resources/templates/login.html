@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Faculty Registration and Login</title>
+
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+
+</head>
+<style>
+	/* Add background image */
+
+	.navbar-inverse {
+    background-color: #333;
+    border-color: #333;
+  }
+	body {
+		background-image: url("images/login.jpeg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	/* Set header font */
+	.navbar-brand {
+		font-family: Arial, sans-serif;
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	/* Center form on page */
+	.container {
+		margin-top: 80px;
+	}
+
+	/* Set form background color and opacity */
+	form {
+		background-color: #f7f7f7;
+		border-radius: 5px;
+		padding: 20px;
+		opacity: 0.9;
+	}
+
+	/* Add margin to form elements */
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	/* Style form labels */
+	label {
+		font-family: Arial, sans-serif;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	/* Style form inputs */
+	input[type=text], input[type=password] {
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		background-color: #e8e8e8;
+		color: #555;
+	}
+
+	/* Style form button */
+	input[type=submit] {
+		background-color: #428bca;
+		color: #fff;
+		font-size: 20px;
+		font-weight: bold;
+		border: none;
+		border-radius: 5px;
+		padding: 10px 20px;
+	}
+
+	/* Style error message */
+	.alert-danger {
+		background-color: #f2dede;
+		color: #a94442;
+		border: none;
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	/* Style logout message */
+	.alert-info {
+		background-color: #d9edf7;
+		color: #31708f;
+		border: none;
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	/* Add hover effect to form button */
+	input[type=submit]:hover {
+		background-color: #3071a9;
+		cursor: pointer;
+	}
+</style>
+<body>
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" >Faculty Registration and
+				Login</a>
+		</div>
+	</div>
+</nav>
+
+<br>
+<br>
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
+			<form th:action="@{/login-faculty}" method="post">
+
+				<!-- error message -->
+				<div th:if="${param.error}">
+					<div class="alert alert-danger">Invalid username or
+						password.</div>
+				</div>
+
+				<!-- logout message -->
+				<div th:if="${param.logout}">
+					<div class="alert alert-info">You have been logged out.</div>
+				</div>
+
+				<div class = "form-group">
+					<label for ="username"> Email </label> :
+					<input type="text" class = "form-control" id ="username" name = "username"
+						   placeholder="Enter Email ID" autofocus="autofocus">
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>: <input type="password"
+																   id="password" name="password" class="form-control"
+																   placeholder="Enter Password" />
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<input type="submit" name="login-submit" id="login-submit"
+								   class="form-control btn btn-primary" value="Log In" />
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="form-group">
+						<span>New Faculty? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+			</div>
+			<div class="form-group">
+						<span><a href="/" th:href="@{/main}">Go to Main Page</a></span>
+			</div>
+
+			<div class="form-group">
+					<span><a href="/" th:href="@{/coordinator}">Coordinator Login
+								here</a></span>
+			</div>
+			<div class="form-group">
+					<span><a href="/" th:href="@{/login}">Admin Login
+								here</a></span>
+			</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Confirm Delete Faculty</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-TYKJO/zwk/0w0mtEhNYAp84RK9ms6PwmC6+J2+WRLdCkP53OaAtgguDlPXOJd0J67y4X4BxZe3O+umF5K5JZcA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f7f7f7;
+		}
+		.prompt-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 100px auto;
+		}
+		h2 {
+			font-size: 2rem;
+			margin-bottom: 30px;
+			text-align: center;
+			color: #dc3545;
+		}
+		button {
+			margin-top: 20px;
+			padding: 10px 40px;
+			font-size: 1.2rem;
+		}
+		.btn-danger {
+			background-color: #dc3545;
+			border-color: #dc3545;
+			transition: background-color 0.3s;
+		}
+		.btn-danger:hover {
+			background-color: #c82333;
+			border-color: #bd2130;
+		}
+		.fa-exclamation-triangle {
+			font-size: 4rem;
+			color: #dc3545;
+			margin-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="prompt-container">
+					<i class="fas fa-exclamation-triangle"></i>
+					<h2>Are you sure you want to delete this faculty record?</h2>
+					<form method="post" th:action="@{/faculty/{id}/delete(id=${faculty.id})}">
+						<input type="hidden" name="_method" value="DELETE">
+						<button type="submit"name="confirm" value="yes" class="btn btn-danger">yes</button>
+						<a href="/faculty"><button type="button" class="btn btn-secondary">No</button></a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>

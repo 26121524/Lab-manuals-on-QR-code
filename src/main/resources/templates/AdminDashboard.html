@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <style>
+		.admin-header {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 20px;
+    background-color: #333;
+  }
+
+  .admin-profile {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .admin-info h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .admin-info p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .admin-profile p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  .admin-info h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .admin-info p {
+    margin: 0;
+  }
+
+  .admin-options button {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .logout {
+    background-color: red;
+  }
+  .admin-options button:hover {
+    background-color: #23527c;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  thead th {
+    background-color: #ddd;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+  }
+
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .cancel-faculty {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .cancel-faculty:hover {
+    background-color: #c9302c;
+  }
+.main-heading {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin-top: 0;
+    margin-left: 0px;
+  }
+
+    </style>
+
+</head>
+<body>
+<h1 class="main-heading">Admin Dashboard</h1>
+<div class="admin-header">
+    <div class="admin-profile">
+        <img th:src="@{/admin1.jpg}" alt="Admin Profile Photo">
+        <div class="admin-info">
+            <h1>Kruti Bathani</h1>
+            <p th:text="${#authentication.principal.username}"></p>
+        </div>
+    </div>
+    <div class="admin-options">
+        <a th:href="@{/create-course}">
+            <button class="create-course">Create Course</button>
+        </a>
+        <a th:href="@{/logout}">
+            <button class="create-course">Logout</button>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h1 class="table-heading">List of Coordinators</h1>
+        </div>
+        <div class="col-lg-12">
+            <a th:href="@{/coordinator/new}" class="btn btn-primary btn-sm mb-3">Add Coordinator</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th> Coordinator Name</th>
+            <th> Coordinator Email</th>
+            <th> Remove Coordinator</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coordinators: ${coordinators}">
+            <td th:text="${coordinators.firstName}"></td>
+            <td th:text="${coordinators.email}"></td>
+            <td>
+                <a th:href="@{/coordinator/{id}(id=${coordinators.id})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

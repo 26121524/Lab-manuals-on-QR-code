@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code</title>
+    <style>
+        #qrImage {
+            position: relative;
+            display: inline-block;
+            top:70px;
+        }
+
+        #closeButton {
+            position: absolute;
+            top: 50px;
+            right: 550px;
+            width: 40px;
+            height: 40px;
+        }
+
+        #closeButton::before,
+        #closeButton::after {
+            position: absolute;
+            content: '';
+            width: 30px;
+            height: 2px;
+            transform: rotate(45deg);
+        }
+
+        #closeButton::before {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        #closeButton::after {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+</a><br>
+
+<div id="closeButton">
+<a href="/main"><img th:src="@{/closeimg1.png}"alt="close button" width="45"height="60"/></a>
+</div>
+<center>
+<div id="qrImage">
+        <img th:src="'data:image/png;base64,' + ${qrImage}" />
+</div>
+</center>
+</body>
+</html>

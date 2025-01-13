@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="UTF-8">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="faculty.css">
+  </head>
+  <style>
+/* Set the background color for the page */
+body {
+    background-color: #fff;
+  }
+
+  /* Style the faculty header */
+  .faculty-header {
+    background-color: #333;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  /* Style the faculty profile
+  .faculty-profile {
+    display: flex;
+    align-items: center;
+  }
+
+  .faculty-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .faculty-profile h1 {
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+  }*/
+  .faculty-profile {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .faculty-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .faculty-info h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .faculty-info p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+
+  .faculty-profile p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .main-heading {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin-top: 0;
+    margin-left: 0px;
+  }
+   /*Style the faculty options */
+
+  .faculty-options {
+    display: flex;
+    align-items: center;
+  }
+
+  .faculty-options button {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 10px 20px;
+    margin-left: 15px;
+  }
+
+  .faculty-options button:hover {
+    background-color: #ddd;
+  }
+
+  /* Style the table */
+  table {
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #f2f2f2;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  table td {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  .table-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 152px;
+  }
+</style>
+  <body>
+    <div class="faculty-header">
+      <div class="faculty-profile">
+        <img src="team1.jpeg" alt="Faculty Profile Photo">
+        <div class="faculty-info">
+          <h1>abc</h1>
+          <p><span sec:authentication="principal.username"></span></p>
+          <p>X years of experience</p>
+        </div>
+      </div>
+        <!--<h4 class="main-heading">Faculty Dashboard</h4>-->
+        <div class="faculty-options">
+          <a th:href="@{/logout}"><button class="logout">Logout</button></a>
+      </div>
+    </div>
+    <h2 class="table-heading">Subjects Authority</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Semester</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr th:each="faculty: ${faculty}">
+        <td th:value="${faculty.id}" th:text="${faculty.Subject}"></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <br><br>
+    <center>
+      <a th:href="@{/experiments/new}" class="btn btn-primary btn-sm mb-3">Add Experiment Links</a></center>
+    <br>
+    <h2 class="table-heading">Experiments</h2>
+  <br><br>
+    <table>
+      <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Experiment Number</th>
+        <th>Links</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="experiments: ${experiments}">
+        <td th:text="${experiments.subject}"></td>
+        <td th:text="${experiments.experiment}"></td>
+        <td th:text="${experiments.link}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

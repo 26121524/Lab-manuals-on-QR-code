@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Experiment</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+.form-control:focus {
+			border-color: #1b6ec2;
+			box-shadow: none;
+		}
+
+		.btn-primary {
+			background-color: #1b6ec2;
+			border-color: #1b6ec2;
+		}
+
+		.btn-primary:hover {
+			background-color: #005fbf;
+			border-color: #005fbf;
+		}
+
+		.form-group label {
+			font-weight: bold;
+		}
+
+		.form-group .input-group-text {
+			background-color: #e9ecef;
+			border-color: #ced4da;
+		}
+
+		.form-group .form-control:not(select) {
+			padding-left: 40px;
+		}
+
+		.select2-container {
+			width: 100% !important;
+		}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Faculty Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="card">
+        <h1 class="card-header text-center">Add Experiment Info</h1>
+        <div class="card-body">
+          <form th:action="@{/experiments}" th:object="${experiments}" method="POST">
+            <div class="form-group">
+              <label>Subject</label>
+              <select class="form-control" name="Subject" th:field="*{subject}">
+                <option value="">Select subject...</option>
+                <option value="DAA">DAA</option>
+                <option value="CJT">CJT</option>
+                <option value="TAFL">TAFL</option>
+                <option value="AJT">AJT</option>
+                <option value="DPAF">DPAF</option>
+                <option value="LT">LT</option>
+                <option value="OTHER">OTHER</option>
+              </select>
+            </div>
+            <div class ="form-group">
+              <label> Enter Experiment number </label>
+              <input
+                      type = "text"
+                      name = "experiment"
+                      th:field = "*{experiment}"
+                      class = "form-control"
+                      placeholder="Enter Number"
+              />
+            </div>
+
+            <div class ="form-group">
+              <label> Enter Experiment Link </label>
+              <input
+                      type = "text"
+                      name = "link"
+                      th:field = "*{link}"
+                      class = "form-control"
+                      placeholder="Enter Experiment Link(Drive Link)"
+              />
+            </div>
+            <div class = "box-footer">
+              <button type="submit" class = "btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

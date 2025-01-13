@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Manuals on QR</title>
+    <script>
+    document.querySelector('img').addEventListener('click', function() {
+        window.location.href = "/main";
+    });
+</script>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FFFAF3;
+    }
+    h1 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: inline-table;
+      flex-wrap: wrap;
+    }
+    li {
+      cursor: pointer;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      position: relative;
+    }
+    .experiments {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: none;
+      background-color: #E7E8F7;
+    }
+    li:hover .experiments {
+      display: block;
+    }
+     header {
+		 margin-top: 0;
+  padding-top: 0;
+    background-color: #266E88;
+    color: white; /* set the font color to white */
+    font-size: 24px; /* set the font size to 24 pixels */
+    font-family: Arial, sans-serif; /* set the font family to Arial or sans-serif */
+    padding: 20px; /* add some padding to the header */
+  }
+  .box-header {
+	  display: inline-block;
+  background-color: #F2F2F2;
+  border: 1px solid #C9C9C9;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.section-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.LoginFirst{
+	background-color:white;
+    color:black;
+    position: absolute;
+    width:70px;
+    height:35px;
+    left: 1400px;
+    top: 50px;
+	}
+.new-qr{
+	background-color:white;
+    color:black;
+    position: absolute;
+    left: 1200px;
+    top: 130px;
+	}
+  </style>
+</head>
+<body>
+	<header>
+  <div>
+  <img src="ddu_logo.png" alt="DDU Logo"/></div>
+</header>
+  <center>
+  <div class="box-header">
+	  <center>
+  <div style="background-color: #f5f5f5; padding: 10px;">
+  <h2 class="section-heading" style="font-family: Arial, sans-serif; font-weight: bold; margin: 0; padding: 2px;">Select Subject and Experiment</h2>
+</div>
+  </center>
+  </div></center>
+</div>
+  <center>
+    <label for="subject">Semester 1</label>
+    <ul id="subject">
+        <li>CSA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>Unix
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>DM
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 2</label>
+    <ul id="subject1">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+           
+
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 3</label>
+    <ul id="subject2">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 4</label>
+    <ul id="subject3">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <br><br>
+    <label for="subject">Semester 5</label>
+    <ul id="subject4">
+        <li>DAA
+            <div class="experiments">
+                <ul id="experimentslist">
+                    <li>Experiment 1 <a id="experimentlink1" href="/daa">Get QR</a></li>
+                    <li>Experiment 2 <a id="experimentlink2" href="/amp">Get QR</a></li>
+                    <li>Experiment 3 <a id="experimentlink3" href="/cjt">Get QR</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul id="experimentslist1">
+                    <li  data-experiment-id="amp">Experiment 1</li>
+                    <li  data-experiment-id="amp"> Experiment 2</li>
+                    <li  data-experiment-id="amp">Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 6</label>
+    <ul id="subject6">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 7</label>
+    <ul id="subject7">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul id="experiments-list">
+                    <li data-experiment-id="cjt">Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <label for="subject">Semester 8</label>
+    <ul id="subject8">
+        <li>DAA
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 1</li>
+                    <li>Experiment 2</li>
+                    <li>Experiment 3</li>
+                </ul>
+            </div>
+        </li>
+        <li>AMP
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 4</li>
+                    <li>Experiment 5</li>
+                    <li>Experiment 6</li>
+                </ul>
+            </div>
+        </li>
+        <li>TAFL
+            <div class="experiments">
+                <ul>
+                    <li>Experiment 7</li>
+                    <li>Experiment 8</li>
+                    <li>Experiment 9</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+</center>
+    <a th:href = "@{/experimentqr}"><button class="new-qr">View New Added QR Codes</button></a>
+    <a th:href = "@{/login-faculty}"><button class="LoginFirst">Login</button></a>
+<br>
+</body>
+</html>
+
+
+
